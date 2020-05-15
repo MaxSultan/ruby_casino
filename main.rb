@@ -21,4 +21,13 @@
 # The player should have a Wallet and the Wallet should be its own class with remove and add methods (OOP)
 # Player's bankroll goes up and down with wins and losses
 # Ability to move to and from games
- 
+
+puts "Welcome to the Casino"
+puts "what is your name?"
+print '>'
+name = gets.chomp.to_s
+puts "How much cash do you have?"
+print '>'
+cash = gets.chomp.to_s
+
+cust1 = Player.new(name, cash)
