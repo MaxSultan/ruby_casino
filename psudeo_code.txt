@@ -1,0 +1,43 @@
+# Basic Objectives:
+
+# Start game player has a name and a wallet  (done)
+# Player can go to different games via menu (done
+# Slots 
+# High / Low 
+# Use classes to start the casino, bankroll, and each individual game (done ish)
+# Player places bet and wins / loses (hint: rand)
+# The player should have a Wallet and the Wallet should be its own class with remove and add methods (OOP)
+# Player's bankroll goes up and down with wins and losses
+# Ability to move to and from games
+
+high/Low
+
+array of cards 
+#[A spades, 2 hearts, etc]
+(@ranks[i], suit, color)
+
+get two card values from the card array
+face_up_card = @cards.pop
+have a player make a bet
+puts "What is your bet?"
+print '>'
+@bet = gets.chomp.to_i
+show them the first card
+puts #{face_up_card}
+have them say higher or lower
+guess = gets.chomp.to_s
+show them the second card
+face_down_card = @cards.pop
+compare card values
+
+add or subtract from cash
+
+
+
+
+
+
+
+
+
+

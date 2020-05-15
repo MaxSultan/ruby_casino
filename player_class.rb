@@ -2,7 +2,7 @@ class Player
 
     def initialize(name, wallet)
     @name = name
-    @wallet = wallet
+    @cash = wallet
     end 
 
 end 
