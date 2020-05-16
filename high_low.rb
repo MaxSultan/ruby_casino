@@ -1,4 +1,8 @@
-module High_low
+class HighLow
+
+  def initialize(player)
+    @player = player
+  end
 
     def deck_of_cards
         values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
@@ -20,7 +24,7 @@ module High_low
     
       def play_high_low
         deck = deck_of_cards
-        puts "Welcome to High/Low #{player.name}"
+        puts "Welcome to High/Low #{@player.name}"
         puts "How much would you like to bet?"
         print '>'
         @bet = gets.chomp.to_i
@@ -37,7 +41,7 @@ module High_low
         @face_down_value = face_down_card[:score]
         result = @face_down_value > @face_up_value ? 'higher' : 'lower'
         puts "the face down card was #{result}"
-        result == @guess ? cust1.add_cash : cust1.lose_cash
+        result == @guess ? @player.add_cash(@bet) : @player.lose_cash(@bet)
         if result == @guess 
             puts "You win!! $#{@bet} has been added to your wallet"
         else
