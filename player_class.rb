@@ -1,18 +1,17 @@
 class Player
     attr_reader :name 
-    attr_accessor :case
+    attr_accessor :cash #this was set to 'case' so i changed it to 'cash' just FYI
 
-    def initialize(name, wallet)
+    def initialize(name, cash)
     @name = name
-    @cash = wallet
+    @cash = cash
     end 
-
-    def add_cash
-        @bet += @cash
-     end 
  
-     def lose_cash
-         @bet -= @cash
-     end 
+     def lose_cash(bet)
+        @cash -= bet
+    end
 
-end 
+    def add_cash(bet)
+        @cash += bet
+    end 
+end
