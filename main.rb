@@ -11,45 +11,43 @@
 # Ability to move to and from games
 
 require_relative 'player_class'
-require_relative 'deck_class'
-require_relative 'slot_game'
+# require_relative 'slot_game'
 
 class Casino
+    include High_low
+    
     def self.welcome
     puts "Welcome to the Casino"
     puts "what is your name?"
     print '>'
     name = gets.chomp.to_s
-
-    # unless cash
         begin
           print "\nHow much total money would you like to play with today? "
           cash = gets.to_i
           puts "You must have a positive bank account to play!" if cash<=0
         end until cash > 0
-    #   end
       @cash = cash
     #   play_forever
-    cust1 = Player.new(name, @cash)
+    player = Player.new(name, @cash)
     end 
+
 
     def play_slots
     puts "\nWelcome to the slot machine"
-    puts 
-
+    Slotgame.play_forever
     end 
     
     
 
     def self.main_menu
-        puts "What game do you want to play?"
+        puts "\nWhat game do you want to play?"
         puts "1) Slots"
         puts "2) High/Low"
         print "> "
         menu_selector = gets.chomp.to_i
         case 
             when 1
-                play_slots
+                # SlotGame.new.play_forever 
             when 2
                 play_high_low
             else
@@ -61,6 +59,8 @@ class Casino
             
         end
     end 
+
+    
     
 end 
 
@@ -68,7 +68,7 @@ end
 
 Casino.welcome
 Casino.main_menu
-
+Casino.play_high_low
 
 
 
