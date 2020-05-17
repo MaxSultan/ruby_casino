@@ -53,6 +53,4 @@ class SlotGame
       end
     end
 end
-
-# SlotGame.new.play_forever 
  
