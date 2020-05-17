@@ -1,51 +1,46 @@
 class SlotGame
-    SLOT_COUNT = 3
-    TOKENS     = %w[Cherry Orange Plum Bell Melon Bar]
-    KEEP_PLAYING_RESPONSES = %w[y yes sure ok go]
-    # def initialize(cash=nil)
-    #     unless cash
-    #       begin
-    #         print "\nHow much total money would you like to play with today? "
-    #         cash = gets.to_i
-    #         puts "You must have a positive bank account to play!" if cash<=0
-    #       end until cash > 0
-    #     end
-    #     @cash = cash
-    #   end
-    
-    def play_forever
-      begin
-        # Using begin/end ensures one turn will be played
-        # before asking the player if they want to go on
-        play_one_turn
-      end while @cash>0 && keep_playing?
-      puts "\nYou have ended with $#{@cash}; goodbye!"
-    end
-  
-    def play_one_turn
-      puts "\nTotal cash: $#{@cash}"
-  
-      begin
-        print "\nHow much would you like to bet? "
-        @bet = gets.to_i
-        puts "\nYou only have $#{@cash}!" if bet > @cash
-      end until bet <= @cash
-      @cash -= bet
-  
-      results = SLOT_COUNT.times.map{ TOKENS.sample }
-      puts results.join(' - ')
-      winnings = bet * multiplier(results)
+
+  def initialize(player)
+    @player = player
+  end
+
+  SLOT_COUNT = 3
+  TOKENS     = %w[Cherry Orange Plum Bell Melon Bar]
+  KEEP_PLAYING_RESPONSES = %w[y yes sure ok go]
+
+  def play_forever
+    begin
+      # Using begin/end ensures one turn will be played
+      # before asking the player if they want to go on
+      play_one_turn
+    end while @player.cash>0 && keep_playing?
+    puts "You have ended with $#{@player.cash}; goodbye!"
+  end
+
+  def play_one_turn
+    puts "Total cash: $#{@player.cash}"
+
+    begin
+      print "How much would you like to bet? "
+      bet = gets.to_i
+      puts "You only have $#{@player.cash}!" if bet > @player.cash
+    end until bet <= @player.cash
+    @player.cash -= bet
+
+    results = SLOT_COUNT.times.map{ TOKENS.sample }
+    puts results.join(' - ')
+    winnings = bet * multiplier(results)
 
     if winnings>0
-      @cash += winnings
-      puts "\nYou just won $#{winnings}!"
+      @player.cash += winnings
+      puts "You just won $#{winnings}!"
     else
-      puts "\nSorry, you're not a winner."
+      puts "Sorry, you're not a winner."
     end
   end
 
   def keep_playing?
-    print "\nWould you like to continue? "
+    print "Would you like to continue? "
     KEEP_PLAYING_RESPONSES.include?(gets.chomp.downcase)
   end
 
@@ -60,4 +55,4 @@ class SlotGame
 end
 
 # SlotGame.new.play_forever 
-# if __FILE__==$0 
+ 

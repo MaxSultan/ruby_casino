@@ -7,11 +7,12 @@
 # Use classes to start the casino, bankroll, and each individual game (done ish)
 # Player places bet and wins / loses (hint: rand) (done for high low game)
 # The player should have a Wallet and the Wallet should be its own class with remove and add methods (OOP)
-# Player's bankroll goes up and down with wins and losses
+# Player's bankroll goes up and down with wins and losses(done)
 # Ability to move to and from games
 
 require_relative 'player_class'
 require_relative 'high_low'
+require_relative 'slot_game'
 
 class Casino
 
@@ -45,6 +46,9 @@ def self.welcome
 
         case menu_selector
             when 1
+                slots_game = SlotGame.new(@player)
+                slots_game.play_forever
+                puts "Your total cash is: $#{@player.cash}"
                 # SlotGame.new.play_forever 
             when 2
                 high_low_game = HighLow.new(@player)

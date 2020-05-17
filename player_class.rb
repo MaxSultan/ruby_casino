@@ -6,7 +6,7 @@ class Player
     @name = name
     @cash = cash
     end 
- 
+    
      def lose_cash(bet)
         @cash -= bet
     end
