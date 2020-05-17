@@ -18,8 +18,12 @@ class HighLow
             })
           end
         end
-      
         return deck.shuffle
+      end
+
+      def keep_playing?
+        print "Would you like to continue? "
+        KEEP_PLAYING_RESPONSES.include?(gets.chomp.downcase)
       end
     
       def play_high_low
